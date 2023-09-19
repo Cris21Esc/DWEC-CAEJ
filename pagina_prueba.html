@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="spa">
 <head>
+<script src="holamundo.js" defer></script>
     <meta charset="UTF-8">
     <title>Prueba</title>
 </head>
 <body>
     <h1>Primera página de prueba</h1>
     <h2>Hola soy Cristopher</h2>
+
+    <h3 onclick="alert('Hola Mundo')">No Tocar</h3>
 
     <nav>
         <a href="www.google.es">Google</a>
@@ -29,8 +32,29 @@
 
     <script>
         let estudiantes = [{'nombre': 'Cristopher','edad': 22},{'nombre': 'Leo','edad': 19},{'nombre': 'Alex','edad': 21}]
+         
+        /*function holamundo(){
+            alert('Hola Mundo')
+        }*/
+        console.log('Hola Mundo')
 
+        console.group('Bloque 1')
+            console.log('Sub-Bloque 1 A')
+            console.log('Sub-Bloque 1 B')
+            console.groupCollapsed('Oculto')
+                console.log('Final D:')
+            console.groupEnd('Oculto')
+        console.groupEnd('Bloque 1')
+
+
+        console.group('Bloque 2')
+            console.log('Sub-Bloque 2 A')
+            console.log('Sub-Bloque 2 B')
+            
+        console.groupEnd('Bloque 1')
     </script>
+
+    
 
     <script type="text/javascript">
         let a = 5
