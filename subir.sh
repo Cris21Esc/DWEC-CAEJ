@@ -12,6 +12,6 @@ read -p "Escribe el mensaje de subida: " mensaje
 git commit -m "$mensaje" .
 
 echo "Paso 4: Realizar subida"
-echo "Recuerda tu token: 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_"
+echo "Recuerda tu token: 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_"
 git push
 
