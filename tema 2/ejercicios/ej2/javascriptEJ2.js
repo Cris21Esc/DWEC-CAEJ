@@ -18,6 +18,4 @@ console.log(`Tu nombre es ${nombre}, tu apellido es ${apellido}
              El resultado de multiplicar es ${multiplicacion}
              El resultado de dividir es ${division}
 `)
-alert(`Tu nombre es ${nombre}, tu apellido es ${apellido} y has escrito los siguientes valores: ${valor1}, ${valor2}, ${valor3}`)
-
-/**/
+alert(`Tu nombre es ${nombre}, tu apellido es ${apellido} y has escrito los siguientes valores: ${valor1}, ${valor2}, ${valor3} \n`)
