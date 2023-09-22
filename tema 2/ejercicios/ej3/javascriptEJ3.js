@@ -1,13 +1,21 @@
-let valor1 = prompt('Escribe tu sueldo')
-let valor2 = prompt('Escribe tus años de antigüedad')
+let valor1 = parseInt(prompt('Escribe tu sueldo'))
+let valor2 = parseInt(prompt('Escribe tus años de antigüedad'))
 
 const yo = new empleado(valor1,valor2)
 
-function empleado(sueldo_año, año){
+function empleado(sueldo,año){
     this.sueldo_año = `${sueldo}
     ${año}`;
-    this.año = año;
+    this.valor = parseInt(calculo(sueldo,año));
+}
 
+function calculo(valor1,valor2){
+    if(valor1 < 500 && valor2 >= 10)
+        return (valor1*3)
+    else if(valor1 < 500 && valor2 < 10)
+    return (valor1*2)
+    else if(valor1 >= 500)
+    return valor1
 }
 
 console.table(yo)
