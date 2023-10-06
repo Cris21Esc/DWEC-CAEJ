@@ -52,14 +52,15 @@ let JDH =()=>{
 while(socios.length>=0){let mostrar = setInterval(JDH,1000);}*/
 
 /*Ejercicio 4.2*/
-$numAlum = parseInt(prompt("¿cuantos alumnos vas a adjuntar?"));
+/*
+let numAlum = parseInt(prompt("¿cuantos alumnos vas a adjuntar?"));
 let clase =[];
 let media = 0.0;
 function Alumno(nombre,nota){
     this.nombre = nombre;
     this.nota = nota;
 }
-for(let i = 0; i<$numAlum;i++){
+for(let i = 0; i<numAlum;i++){
     let nombre = prompt("Dime el nombre del alumno");
     let nota = parseFloat(prompt("Dime la nota del alumno"));
     let nuevoAlumno = new Alumno(nombre, nota);
@@ -71,4 +72,27 @@ clase.forEach(alumno => {
     console.table(alumno)
 });
 console.log(`La media es ${media/parseFloat(clase.length)}`)
+*/
+/*Ejercicio 4.3*/
 
+let nombres = [];
+let edades = [];
+let numNombres = parseInt(prompt("¿Cuantas personas vas a añadir?"));
+for(let i = 0; i<numNombres;i++){
+    let nombre = prompt(`Escribe el nombre de la persona número ${i+1} a añadir"`);
+    let años = parseInt(prompt(`Escribe los años de la persona número ${i+1}`));
+    nombres.push(nombre);
+    edades.push(años);
+}
+
+for(let i = 0; i<numNombres;i++){
+    console.log(nombres[i]);
+    console.log(edades[i]);
+}
+
+let media = 0;
+
+edades.forEach(años => {
+    media += años;
+});
+console.log(`La media es ${media/numNombres}`)
