@@ -15,6 +15,12 @@ class Productos{
         this.calcularImporte();
         return `Nombre: ${this._nombre}, Unidades: ${this._unidades} x Precio: ${this._precio}€ = Importe: ${this._importe}` ;
     }
+    valueOf(){
+        return this._precio;
+    }
+    toString(){
+        return `Nombre: ${this._nombre}, Unidades: ${this._unidades} x Precio: ${this._precio}€ = Importe: ${this._importe}` ;
+    }
 }
 
 class Televisores extends Productos{
@@ -24,6 +30,9 @@ class Televisores extends Productos{
     }
     get getInfo(){
         return `Nombre: ${this._nombre}, Tamaño: ${this._tamaño}m`;
+    }
+    toString(){
+        return `${super.toString},Tamaño: ${this._tamaño}`;
     }
 
 }
