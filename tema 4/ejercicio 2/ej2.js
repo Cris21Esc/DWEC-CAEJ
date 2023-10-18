@@ -61,3 +61,6 @@ class arrayProductos{
         return res;
     }
 }
+ function prodOrdenPorNombre (prodArray){
+    prodArray.sort();
+ }
