@@ -64,3 +64,19 @@ function limpiarLista(){
     elementos.forEach(element=>{element.remove()});
 
 }
+
+function insertarCheckbox(){
+    let cantidad = parseInt(document.getElementById('contenido')).value;
+    let padre = document.getElementById('contenedor');
+    for(let i = 1; i <= cantidad;i++) {
+        let value = Math.random();
+        let check = document.createElement("input");
+        check.setAtributte("value", value);
+
+        let span = document.createElement("span");
+        span.innerHTML=value;
+        
+        
+
+    }
+}
