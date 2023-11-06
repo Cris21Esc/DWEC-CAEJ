@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Aficiones</title>
+    <link rel="stylesheet" type="text/css" href="./css/estilos.css">
+    <script src="./js/javascript.js" defer></script>
+</head>
+<body>
+    <form>
+        <h1>Formulario de Aficiones</h1>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <div id="sexo">Sexo:<br></div><br>
+        <!--<input type="radio" id="sexo" name="sexo">
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="femenino" name="sexo" value="femenino">
+        <label for="femenino">Femenino</label>
+        <input type="radio" id="otro" name="sexo" value="otro">
+        <label for="otro">Otro</label><br><br> -->
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="aficion">Afición Favorita:</label>
+        <select id="aficion" name="aficion">
+        </select>
+
+        <label for="pelicula-preferida">Película Preferida:</label>
+        <input type="text" id="pelicula-preferida" name="pelicula-preferida" list="peliculas">
+
+        <datalist id="peliculas">
+        </datalist>
+
+        <label for="serie-preferida">Serie Preferida:</label>
+        <input type="text" id="serie-preferida" name="serie-preferida" list="series">
+
+        <datalist id="series">
+        </datalist>
+
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+
+        <input id="enviar" type="submit" value="Enviar">
+        <input id="limpiar" type="reset" value="Limpiar">
+    </form>
+</body>
+</html>

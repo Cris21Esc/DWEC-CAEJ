@@ -15,6 +15,9 @@ class Productos{
         this.calcularImporte();
         return `Nombre: ${this._nombre}, Unidades: ${this._unidades} x Precio: ${this._precio}€ = Importe: ${this._importe}` ;
     }
+    set precio(precio){
+        this._precio = precio;
+    }
     valueOf(){
         return this._precio;
     }
@@ -35,7 +38,7 @@ class Televisores extends Productos{
         return `Nombre: ${this._nombre}, Tamaño: ${this._tamaño}m`;
     }
     toString(){
-        return `${super.toString},Tamaño: ${this._tamaño}`;
+        return `${super.toString}, Tamaño: ${this._tamaño}`;
     }
     valueOf(){
         return this._precio;
