@@ -25,6 +25,18 @@ const datosMultimediaArray = [
         "Los Serrano",
         "American Horror Story"
       ]
+    },
+    {
+      "Animes":[
+        "Death Note",
+        "Sailor Moon",
+        "Sword Art Online",
+        "Assasination Classroom",
+        "Tokyo Ghoul",
+        "Mob Psycho 100",
+        "Blue Lock",
+        "One Piece"
+      ]
     }
   ];
 
@@ -83,8 +95,6 @@ function mostrarAficiones(){
 }
 function mostrarMultimedia(){
   //Comienzo de la implementación de dinamismo de las Peliculas
-  let peliculas = document.getElementById("peliculas");
-  let series = document.getElementById("series");
 
   //Creación del bucle para la asignación de valores
     datosMultimediaArray.forEach(ObjJson => {
