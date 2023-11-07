@@ -53,6 +53,7 @@ function iniciar(){
 	document.getElementById("tiradasJ1").innerHTML="TE QUEDAN " + tiradas_j1 + " TIRADAS";
 	document.getElementById("tiradasJ2").innerHTML="TE QUEDAN " + tiradas_j2 + " TIRADAS";
 
+	mostrarJugadores();
 
 }
 
@@ -92,7 +93,7 @@ function tiradaJ2(){
 
 
 function comprobarGanador(){
-	
+
 	if (tiradas_j1 == 0){											// ¿Ha terminado jugador 1?
 		document.getElementById("idBotonTirarJ1").setAttribute('disabled', "true");
 	}
@@ -102,7 +103,8 @@ function comprobarGanador(){
 	}
 
 	if (tiradas_j2 == 0 && tiradas_j1 == 0) {						// ¿Han terminado ambos jugadores?
-		document.getElementById("idBotonIniciar").removeAttribute('disabled')
+		document.getElementById("idBotonIniciar").removeAttribute('disabled');
+
 		if (puntos_j1 > puntos_j2){				
 			Swal.fire(
 				`Partida Finalizada, ¡¡¡ Vencedor ${nombre_j1} !!!`,
@@ -167,10 +169,21 @@ function generarNumeroAleatorio(){
 /*************************************************************
  *  APARTADO 3 : Gestión de jugadores
 	-> Crear una variable llamada jugadores, para almacenar el nombre de los diferentes jugadores.
-	Debe ser del tipo de dato asociado a una colección que solo almacena valor únicos(¿set? ¿Map? ¿Array?).
+	Debe s.er del tipo de dato asociado a una colección que solo almacena valor únicos(¿set? ¿Map? ¿Array?).
 	Al finalizar cada partida el nombre de todos los jugadores debe ser actualizado en el área de jugadores. No pueden aparecer nombres repetidos en el listado.
  *************************************************************/
+	
+	function mostrarJugadores(){
+		let texto = document.getElementById("idNombreJugadores");
+		texto.innerHTML = "";
+		let jugadores = new Set([]);
+		jugadores.add(document.getElementById("idInputNombreJ1").value);
+		jugadores.add(document.getElementById("idInputNombreJ2").value);		
 
+		jugadores.forEach((element) => {			
+			texto.innerHTML = texto.innerHTML + `${element} `;
+		});
+	}	
 
 
 /********************************************************
