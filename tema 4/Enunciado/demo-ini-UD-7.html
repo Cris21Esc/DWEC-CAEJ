@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formularios en JavaScript</title>
+  <script type="text/javascript" src="./eventos-ini.js" defer></script>
+    
+</head>
+<body> 
+  <h1> UD 5 : Eventos y Formularios </h1>
+
+  <form id="idFormulario">
+      <!-- ÁREA de INPUT TEXT --> 
+      <label for="texto">Cuadro de texto</label>
+      <input id="texto" type="text">
+      <br>
+      <label for="contra">Cuadro de contraseña</label>
+      <input id="contra" type="password">
+      <input id="oculto" type="hidden" value="Formulario-Prueba">
+      <br>
+      <label for="numero">Cuadro de numero</label>
+      <input id="numero" type="number">
+      <br>
+      <label for="color">Cuadro de color</label>
+      <input id="color" type="color">
+      <br>
+      <label for="fecha">Cuadro de fecha</label>
+      <input id="fecha" type="date">
+
+    <br>
+    <br>
+      <!-- ÁREA de RadioButton  : si , no , nsnc -->   
+      <label for="radio1">Hombre</label>
+      <input id="radio1" name="radio" type="radio" value="H">
+      <label for="radio2">Mujer</label>
+      <input id="radio2" name="radio" type="radio" value="M">
+      <label for="radio3">Otro</label>
+      <input id="radio3" name="radio" type="radio" value="O">
+    <br>
+    <br>
+
+    <!-- ÁREA de checkbox  : condiciones y privacidad -->   
+      <label for="check1">Español</label>
+      <input id="check1" type="checkbox" value="E">
+      <label for="check2">Inglés</label>
+      <input id="check2" type="checkbox" value="I">
+      <label for="check3">Francés</label>
+      <input id="check3" type="checkbox" value="F">  
+      <label for="check4">Otros</label>
+      <input id="check4" type="checkbox" value="O">  
+    <br>
+    <br>
+
+    <!-- ÁREA de Select  : primer, segundo, tercer, cuarto -->   
+      <select>
+        <option value="furbo">Furbo</option>
+        <option value="baske">Baske</option>
+        <option value="gaming">Gaming</option>
+        <option value="f1">Formula Juan</option>
+        <option value="boseo">Boseo</option>
+      </select>
+
+    <br>
+    <br>
+    
+    <!-- ÁREA de input list + DataList : primer, segundo, tercer, cuarto --> 
+    <label for="peli-preferida">¿Cual es tu peli favorita?</label>
+    <input type="text" id="peli-preferida" name="peli-preferida" list="peliculas">
+
+        <datalist id="peliculas">
+          <option value="Piratas del Caribe"></option>
+          <option value="Mision Imposible"></option>
+          <option value="Indiana Jones"></option>
+          <option value="Nights at Freddy´s"></option>
+          <option value="SAW"></option>
+        </datalist>
+
+    <br>
+    <br>
+
+    <input id="idEnviar" type="button" value="Enviar"/>
+         
+  </form>
+</body>
+</html>

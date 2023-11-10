@@ -13,8 +13,7 @@ let infoPartida=null;
 let ganador=null;
 let perdedor=null;
 
-
-
+let gestion = [];
 
 function iniciar(){
 
@@ -52,8 +51,6 @@ function iniciar(){
 
 	document.getElementById("tiradasJ1").innerHTML="TE QUEDAN " + tiradas_j1 + " TIRADAS";
 	document.getElementById("tiradasJ2").innerHTML="TE QUEDAN " + tiradas_j2 + " TIRADAS";
-
-	mostrarJugadores();
 
 }
 
@@ -111,8 +108,8 @@ function comprobarGanador(){
 				`${puntos_j1} puntos`,
 				'success'
 			  )
-			ganador=document.getElementById("idNombreJ1").value
-			perdedor=document.getElementById("idNombreJ2").value	
+			ganador=document.getElementById("idInputNombreJ1").value
+			perdedor=document.getElementById("idInputNombreJ2").value	
 							;
 		} else if (puntos_j1 < puntos_j2) {				
 			Swal.fire(
@@ -120,8 +117,8 @@ function comprobarGanador(){
 				`${puntos_j2} puntos`,
 				'success'
 			  )
-			ganador=document.getElementById("idNombreJ1").value
-			perdedor=document.getElementById("idNombreJ2").value
+			ganador=document.getElementById("idInputNombreJ2").value
+			perdedor=document.getElementById("idInputNombreJ1").value
 			
 		} else{
 			
@@ -173,7 +170,7 @@ function generarNumeroAleatorio(){
 	Al finalizar cada partida el nombre de todos los jugadores debe ser actualizado en el área de jugadores. No pueden aparecer nombres repetidos en el listado.
  *************************************************************/
 	
-	function mostrarJugadores(){
+	function gestionJugadores(){
 		let texto = document.getElementById("idNombreJugadores");
 		texto.innerHTML = "";
 		let jugadores = new Set([]);
@@ -191,14 +188,47 @@ function generarNumeroAleatorio(){
 	-> Crear un array llamado resultados con información de todas las partidas. cada elemento del array debe tener la estructura:
 	puntuacion,ganador,jugador 
 	Por ejemplo:
-	14-5,Agustin,Alumno1
+	14-5,ganador,perdedor
 
 	Al finalizar cada partida debes insertar la información correspondiente en el área de resultados. 
     	• Debes crear los elementos tr y td utilizando funciones del DOM. 
     	• Cada nueva fila debe tener la clase “mostrar”
     	• Al hacer click sobre una fila, debes eliminar la fila de a tabla
 *******************************************************/
- 
+	function gestionPuntuacion(){
+
+		let tabla = document.getElementById("idEstadisticas");
+		while(tabla.firstChild){
+			tabla.removeChild(tabla.lastChild);
+		}
+		//let resultado = "Resultado: 14-5";
+		//let ganador = "Ganador: Agustin";
+		//let perdedor = "Perdedor: Leonardo";			
+		let puntuacion = `${puntos_j1} - ${puntos_j2}`;
+		let resultado = {};
+		if(puntos_j1 == puntos_j2){
+			resultado[puntuacion] = ["Empate"];
+		}else{
+			resultado[puntuacion] = [`${ganador}`,`${perdedor}`];
+		}		
+		gestion.push(resultado);
+		
+		gestion.forEach(ObjJSON => {
+			let estadisticas = document.getElementById("idEstadisticas");
+			let titulo = document.createElement("tr");
+			for(clave in ObjJSON){				
+				let prueba = document.createElement("td");
+				prueba.innerHTML = clave;
+				titulo.appendChild(prueba);
+				ObjJSON[clave].forEach(element=>{
+					let valor = document.createElement("td");
+					valor.innerHTML = element;		
+					titulo.appendChild(valor);
+				});				
+			}
+			estadisticas.appendChild(titulo);
+		});
+	}
 
 /*************************************************************
  ***********************************************************

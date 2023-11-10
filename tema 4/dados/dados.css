@@ -70,6 +70,7 @@ hr{
 div#idResultado {	
 	position: fixed;
 	bottom: 10px;
+	height: 300px;
 	width: 60%;
 	margin-left: 20%;
 	border-radius: 10px;  
@@ -77,6 +78,7 @@ div#idResultado {
     border: 2px solid #39c;	
 	background-color: white;
 	z-index: 10;
+	overflow: scroll;
 		
 }
 #idListadoJugadores{

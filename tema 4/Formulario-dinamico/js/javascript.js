@@ -107,8 +107,9 @@ function mostrarMultimedia(){
         ObjJson[clave].forEach(element=>{
 
           //Asignación de valores
-          let option = document.createElement("option");
-          option.setAttribute("value",element);
+          let option = document.createElement("td");
+          //option.setAttribute("value",element);
+          option.innerHTML = element;
           lista.appendChild(option);
         });
       }
