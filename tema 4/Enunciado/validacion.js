@@ -3,6 +3,8 @@ var color_css = 'background: #222; color: #bada55'
 * Uso de addEventListener this y Event
 **/
 
+let formulario = document.forms["idFormulario"];
+
 document.getElementById("idEnviar").addEventListener ("click", validarInformacion);
 
 function validarInformacion(e){
@@ -16,7 +18,7 @@ function validarInformacion(e){
     });
 
 
-    if(validarAPIHTML(e) && validarJS(e) && confirm("¿Deseas enviar el formulario?")){
+    if(validarAPIHTML(e) /*&& validarJS(e)*/ && confirm("¿Deseas enviar el formulario?")){
         
        return true;
 
@@ -27,10 +29,24 @@ function validarInformacion(e){
     }
 }
 
+/* VALIDACION MEDIANTE API */
+ 
 function validarAPIHTML(e){
-    console.log("Pendiente de implementar");
-    return true;
+    return validarNombreHTML();
 }
+
+
+function validarNombreHTML(){
+    let inputNombre = formulario.elements["nombre"];
+    let zonaError = document.getElementById("idErrorNombre");
+    if(inputNombre.validity.valueMissing){
+        zonaError
+        zonaError.innerHTML = "No puedes dejar el campo en blanco";
+    }
+}
+
+
+/* VALIDACION MEDIANTE JS*/
 
 function validarJS(e){
 
