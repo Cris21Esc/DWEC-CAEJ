@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formularios en JavaScript</title>
-  <script type="text/javascript" src="./eventos-ini.js" defer></script>
+  <script type="text/javascript" src="./validacion.js" defer></script>
     
 </head>
 <body> 
@@ -12,15 +12,18 @@
 
   <form id="idFormulario">
       <!-- ÁREA de INPUT TEXT --> 
-      <label for="texto">Cuadro de texto</label>
-      <input id="texto" type="text">
+      <label for="nombre">Cuadro de nombre</label>
+      <input id="nombre" name="nombre" type="text">
+      <span id="idErrorNombre" name="idErrorNombre+"></span>
+
       <br>
       <label for="contra">Cuadro de contraseña</label>
       <input id="contra" type="password">
       <input id="oculto" type="hidden" value="Formulario-Prueba">
       <br>
-      <label for="numero">Cuadro de numero</label>
-      <input id="numero" type="number">
+      <label for="edad">Cuadro de edad</label>
+      <input id="edad" type="number" name="edad">
+      <span id="idErrorEdad" name="idErrorEdad"></span>
       <br>
       <label for="color">Cuadro de color</label>
       <input id="color" type="color">
@@ -53,7 +56,7 @@
     <br>
 
     <!-- ÁREA de Select  : primer, segundo, tercer, cuarto -->   
-      <select>
+      <select id="idLista" name="idLista">
         <option value="furbo">Furbo</option>
         <option value="baske">Baske</option>
         <option value="gaming">Gaming</option>
@@ -68,7 +71,7 @@
     <label for="peli-preferida">¿Cual es tu peli favorita?</label>
     <input type="text" id="peli-preferida" name="peli-preferida" list="peliculas">
 
-        <datalist id="peliculas">
+        <datalist id="peliculas" name="listaDatalist">
           <option value="Piratas del Caribe"></option>
           <option value="Mision Imposible"></option>
           <option value="Indiana Jones"></option>
