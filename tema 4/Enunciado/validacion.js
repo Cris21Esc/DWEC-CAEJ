@@ -18,7 +18,7 @@ function validarInformacion(e){
     });
 
 
-    if(validarAPIHTML(e) /*&& validarJS(e)*/ && confirm("¿Deseas enviar el formulario?")){
+    if(validarAPIHTML(e) && validarJS(e) && confirm("¿Deseas enviar el formulario?")){
         
        return true;
 
@@ -40,7 +40,6 @@ function validarNombreHTML(){
     let inputNombre = formulario.elements["nombre"];
     let zonaError = document.getElementById("idErrorNombre");
     if(inputNombre.validity.valueMissing){
-        zonaError
         zonaError.innerHTML = "No puedes dejar el campo en blanco";
     }
 }
@@ -50,9 +49,7 @@ function validarNombreHTML(){
 
 function validarJS(e){
 
-    let formulario = document.getElementById("idFormulario");
-
-    if((validarNombre(formulario["nombre"].value) && validarEdad(formulario["edad"].value))){
+    if(validarEmail(formulario["email"].value) /*&& validarInteres(formulario["edad"].value)*/){
         console.log("Validado correctamente");
         return true;
     }else{
@@ -62,24 +59,24 @@ function validarJS(e){
 
 }
 
-function validarNombre(nombre){
-    let zonaError = document.getElementById("idErrorNombre");
-    
-    if(nombre == ""){
+function validarEmail(email){
+    let zonaError = document.getElementById("idEmailError");
+    let regexp = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+    if(email == ""){
         zonaError.innerHTML = "Introduce un valor";
         return false;
     }
 
-    if(nombre.length > 5 && nombre.length < 30){
-        return true;
-    }else{
-        zonaError.innerHTML = "El nombre debe contener entre 5 y 30 caracteres";
+    if(!regexp.test(email)){
+        zonaError.innerHTML = "El email debe tener la estructura de 'valor@dominio', seguido de '.com' o '.es' como corresponda";
         return false;
     }
+    return true;
     
 }
 
-function validarEdad(edad){
+function validarInteres(edad){
     let zonaError = document.getElementById("idErrorEdad");
 
     if(isNaN(parseInt(edad))){
