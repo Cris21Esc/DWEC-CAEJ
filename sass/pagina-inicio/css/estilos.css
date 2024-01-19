@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+:root {
+  --height-nav: 70px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f2f2f2;
+  border: solid 1px blue;
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.inicio__main {
+  display: grid;
+  height: calc(100vh - var(--height-nav));
+  align-items: center;
+  min-height: 600px;
+  border: solid 1px red;
+}
+
+.inicio__texts {
+  flex-basis: 70%;
+}
+
+.inicio__picture {
+  flex-basis: 30%;
+}
+
+.inicio__img {
+  width: 100%;
+  max-width: 450px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 33%;
+}
+
+.inicio__titulo {
+  font-size: 4vw;
+}
+
+.inicio__paragraph {
+  font-size: 2vw;
+  font-weight: 300;
+}
+
+.btn-continuar {
+  background: #1E8449;
+  display: inline-block;
+  padding: 15px 30px;
+  margin-top: 1.5em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.nav {
+  background: #239B56;
+  height: var(--height-nav);
+  color: #fff;
+  border: solid 1px black;
+}
+
+.nav__contenedor {
+  display: grid;
+  grid-template-columns: [col-start] 33% [col-mid] 33% [col-end] 33%;
+  grid-template-rows: [row-start] 33% [row-mid] 33% [row-end] 33%;
+  height: 100%;
+}
+
+.nav__logo {
+  grid-column: col-start/col-mid;
+  grid-row: row-start/row-mid;
+  display: grid;
+  grid-template-columns: [navLc-start] 33% [navLc-mid] 33% [navLc-end] 33%;
+  grid-template-rows: [navLr-start] 33% [navLr-mid] 33% [navLr-end] 33%;
+}
+
+.nav_titulo {
+  grid-row: navLr-mid;
+}
+
+.nav__enlaces {
+  grid-area: row-mid/col-mid;
+  display: grid;
+  grid-template-columns: [navc-start] 33% [navc-mid] 33% [navc-end] 33%;
+  grid-template-rows: [navr-start] 33% [navr-mid] 33% [navr-end] 33%;
+}
+
+.nav__enlace {
+  grid-row: navr-mid;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1em;
+}
+
+/*# sourceMappingURL=estilos.css.map */

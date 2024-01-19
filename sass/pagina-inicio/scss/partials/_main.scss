@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+
+.inicio__main{
+    display: grid;
+    height: calc(100vh - var(--height-nav));
+    align-items: center;
+    min-height: 600px;
+    border: solid 1px red;;
+}
+
+.inicio__texts{
+
+    flex-basis: 70%;
+}
+
+
+.inicio__picture{
+    
+    flex-basis: 30%;
+}
+
+.inicio__img{
+    width: 100%;
+    max-width: 450px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 33%;
+}
+
+.inicio__titulo{
+    font-size: 4vw;
+}
+
+.inicio__paragraph{
+    font-size: 2vw;
+    font-weight: 300;
+}
+
+.btn-continuar{
+    background: #1E8449;
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 1.5em;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+}
