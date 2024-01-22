@@ -15,6 +15,22 @@ const perimetro = computed(() => (2*largo.value) + (2*alto.value));
 const area = computed(() => largo.value * ancho.value);
 const volumen = computed(() => ancho.value * largo.value * alto.value);
 
+watch(alto,(nuevoValor,antiguoValor)=>{
+  if(isNaN(nuevoValor)){
+    alto.value = antiguoValor;
+  }
+});
+watch(ancho,(nuevoValor,antiguoValor)=>{
+  if(isNaN(nuevoValor)){
+    ancho.value = antiguoValor;
+  }
+});
+watch(largo,(nuevoValor,antiguoValor)=>{
+  if(isNaN(nuevoValor)){
+    largo.value = antiguoValor;
+  }
+});
+
 </script>
  <template>
   <header>Calculo del Area y el Perímetro</header>
