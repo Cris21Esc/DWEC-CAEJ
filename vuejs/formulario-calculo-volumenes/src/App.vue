@@ -1,6 +1,14 @@
 <script setup>
-import { ref, computed, watch, reactive } from 'vue'
+import { ref, computed, watch, reactive, onMounted } from 'vue'
 
+const imageSources = ref([])
+
+onMounted(() => {
+  // Assuming your images are named img1.jpg, img2.jpg, img3.jpg
+  for (let i = 1; i <= 3; i++) {
+    imageSources.value.push(`./assets/img/img${i}.png`)
+  }
+})
 let largo = ref(0);
 let alto = ref(0);
 let ancho = ref(0);
@@ -84,4 +92,11 @@ watch(largo,(nuevoValor,antiguoValor)=>{
       <p> Perimetro: {{ perimetro }}</p>
       <p> Volumen: {{ volumen }}</p>
     </div>    
+    <footer ref="footerElementRef">
+      <div>
+        <img :src="imageSources[0]" alt="Image 1">
+        <img :src="imageSources[1]" alt="Image 2">
+        <img :src="imageSources[2]" alt="Image 3">
+      </div>
+    </footer>
  </template>
