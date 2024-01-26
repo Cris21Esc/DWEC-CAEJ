@@ -1,0 +1,10 @@
+{
+    "aficiones": [
+      { "id": "1", "nombre": "deportes" ,"descripcion":"Deportes","URL":"Poner Algo Aqui"},
+      { "id": "2", "nombre": "tecnología" ,"descripcion":"Tecnología","URL":"Poner Algo Aqui"},
+      { "id": "3", "nombre": "documentales" ,"descripcion":"Documentales","URL":"Poner Algo Aqui"},
+      { "id": "4", "nombre": "cine" ,"descripcion":"Cine","URL":"Poner Algo Aqui"},
+      { "id": "5", "nombre": "entretenimiento" ,"descripcion":"Entretenimiento","URL":"Poner Algo Aqui"}
+
+    ]
+  }
