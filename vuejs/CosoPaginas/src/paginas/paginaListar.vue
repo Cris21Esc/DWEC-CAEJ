@@ -1,3 +1,6 @@
+<script>
+</script>
+
 <template>
     <p>Leo La Chupa</p>
 </template>

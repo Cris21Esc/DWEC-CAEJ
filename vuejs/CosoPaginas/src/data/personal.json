@@ -1,9 +1,8 @@
 {
     "aficiones": [
-      { "id": "1", "nombre": "deportes" ,"descripcion":"Deportes","URL":"../assets/img/img1.png"},
-      { "id": "2", "nombre": "tecnología" ,"descripcion":"Tecnología","URL":"../assets/img/img2.png"},
-      { "id": "3", "nombre": "documentales" ,"descripcion":"Documentales","URL":"../assets/img/img3.png"},
-      { "id": "4", "nombre": "cine" ,"descripcion":"Cine","URL":"../assets/img/img4.png"}
-
+      { "id": "1", "nombre": "deportes" ,"descripcion":"Deportes","url":"src/assets/img/img1.png"},
+      { "id": "2", "nombre": "tecnología" ,"descripcion":"Tecnología","url":"src/assets/img/img2.png"},
+      { "id": "3", "nombre": "documentales" ,"descripcion":"Documentales","url":"src/assets/img/img3.png"},
+      { "id": "4", "nombre": "cine" ,"descripcion":"Cine","url":"src/assets/img/img4.png"}
     ]
   }
