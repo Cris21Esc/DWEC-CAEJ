@@ -7,6 +7,7 @@ import { ref, onMounted ,reactive } from "vue";
 
 let aficiones = ref(null)
 let imagenUrl = ref("https://phantom-marca.unidadeditorial.es/3a77955e216ac29d0098cb1b5fc5e8fb/resize/828/f/jpg/assets/multimedia/imagenes/2024/01/27/17063840534486.jpg")
+let filtro = ref("");
 
 let nuevaAficion=reactive({
     nombre:"",
@@ -64,22 +65,39 @@ function limpiar(){
     nuevaAficion.url="";
 }
 function crearElemento(){
-    if(nuevaAficion.nombre!==""&&nuevaAficion.descripcion!==""){
-        
+    if(nuevaAficion.nombre!==""&&nuevaAficion.descripcion!==""){ 
       servicioAficiones
         .post(nuevaAficion)
         .then(res=>{
              //aficiones.value.push(JSON.parse(res));
             alert(`Elemento ${nuevaAficion.nombre} añadido`);
-            obtenerAficiones()
-             limpiar();
-             console.log(nuevaAficion)
+            obtenerAficiones();
+            limpiar();
+            console.log(nuevaAficion)
         })
         .catch(error=>{
             alert(`Error añadiendo elemetno ${error}`);
         }) 
 
     }else alert("El nombre y la descripcion no puede estar vacío");
+}
+
+function buscar(){
+  if(filtro.value == ""){
+    alert("valor en blanco");
+    return false;
+  }
+
+  console.log(filtro.value);
+  servicioAficiones
+    .findByNombre(filtro.value)
+    .then(response => {  
+      console.log(response.data);
+      aficiones.value = response.data;    
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 
@@ -92,6 +110,11 @@ onMounted(() => {
 </script>
 <template>
   <h2>Lista de aficiones</h2>
+  <form>
+    <h1>Nombre</h1>
+    <input type="text" v-model="filtro">
+    <button @click.prevent="buscar">Buscar</button>
+  </form>
   <ul>
     <li v-for="(aficion, id) in aficiones" :key="id" @dblclick="mostrarInfo(aficion)">
       <span class="li-nombre"> {{ aficion.nombre }} </span>
