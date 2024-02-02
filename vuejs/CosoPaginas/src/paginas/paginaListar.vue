@@ -104,9 +104,9 @@ function buscar(){
     });
 }
 
-function actualizar(){
-  
-}
+  function actualizar(){
+    alert("Pendiente de implementar");
+  }
 
 
 // #############################################################
