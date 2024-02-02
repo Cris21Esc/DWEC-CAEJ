@@ -1,0 +1,28 @@
+{
+  "productos": [
+    {
+      "nombre": "Barcelona",
+      "descripcion": "Equipo",      
+      "imagen": "https://img.a.transfermarkt.technology/portrait/header/3226-1542113764.jpg?lm=1",
+      "id": 1
+    },
+    {
+      "nombre": "aa",
+      "descripcion": "bbb",      
+      "imagen": "https://img.a.transfermarkt.technology/portrait/header/3226-1542113764.jpg?lm=1",
+      "id": 2
+    },
+    {
+      "nombre": "asdfasdf",
+      "descripcion": "bbbasdfasdf",      
+      "imagen": "https://img.a.transfermarkt.technology/portrait/header/3226-1542113764.jpg?lm=1",
+      "id": 3
+    },
+    {
+      "nombre": "fasdfa",
+      "descripcion": "basdfabbasdfasdf",      
+      "imagen": "https://img.a.transfermarkt.technology/portrait/header/3226-1542113764.jpg?lm=1",
+      "id": 4
+    }   
+  ]
+}

@@ -1,8 +1,64 @@
 {
-    "aficiones": [
-      { "id": "1", "nombre": "deportes" ,"descripcion":"Deportes","url":"src/assets/img/img1.png"},
-      { "id": "2", "nombre": "tecnología" ,"descripcion":"Tecnología","url":"src/assets/img/img2.png"},
-      { "id": "3", "nombre": "documentales" ,"descripcion":"Documentales","url":"src/assets/img/img3.png"},
-      { "id": "4", "nombre": "cine" ,"descripcion":"Cine","url":"src/assets/img/img4.png"}
-    ]
-  }
+  "aficiones": [
+    {
+      "id": "3",
+      "nombre": "series3",
+      "descripcion": "Series",
+      "url": "src/assets/imagenes/peloa.jpg"
+    },
+    {
+      "id": "ce13",
+      "nombre": "asdfa",
+      "descripcion": "asdfa",
+      "url": "asdfasdf"
+    },
+    {
+      "id": "c32d",
+      "nombre": "asdfgasdfa",
+      "descripcion": "dfasdfa",
+      "url": "asdfasdf"
+    },
+    {
+      "id": "2bf2",
+      "nombre": "afsdfa",
+      "descripcion": "fasdfa",
+      "url": "asdfasdf"
+    },
+    {
+      "id": "f209",
+      "nombre": "daniel",
+      "descripcion": "daniel",
+      "url": "daniel"
+    },
+    {
+      "id": "24e8",
+      "nombre": "5w54",
+      "descripcion": "45455",
+      "url": "45454"
+    },
+    {
+      "id": "2c93",
+      "nombre": "asdfasd",
+      "descripcion": "fasdfa",
+      "url": "fasdf"
+    },
+    {
+      "id": "8823",
+      "nombre": "afasf",
+      "descripcion": "asdfasdf",
+      "url": "asdfasdf"
+    },
+    {
+      "id": "34fd",
+      "nombre": "asdfa",
+      "descripcion": "asdfa",
+      "url": "asdfas"
+    },
+    {
+      "id": "51a2",
+      "nombre": "hola",
+      "descripcion": "hoa",
+      "url": ""
+    }
+  ]
+}

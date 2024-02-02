@@ -7,7 +7,9 @@ const props = defineProps({
 })
 </script>
 
-<template> 
+<template>
+    <!-- <h1> {{ titulo }}</h1> -->
+
     <nav>
         <RouterLink
          v-for="enlace in props.links"

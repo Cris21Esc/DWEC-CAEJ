@@ -1,18 +1,21 @@
-
 import http from "./http-axios";
 
-class servicioAficiones{
-getAll(){
+class servicioAficiones {
+  getAll() {
     return http.get("/aficiones");
-}
-get(id){
+  }
+
+  get(id) {
     return http.get(`/aficiones/${id}`);
+  }
+
+  delete(id) {
+    return http.delete(`/aficiones/${id}`);
+  }
+
+  post(data){
+    return http.post(`/aficiones`,data)
+  }
 }
-delete(id){
-    return http.delete(`/aficiones/${id}`)
-}
-post(aficion){
-    return http.post(`/aficiones`,aficion);
-}
-}
+
 export default new servicioAficiones();

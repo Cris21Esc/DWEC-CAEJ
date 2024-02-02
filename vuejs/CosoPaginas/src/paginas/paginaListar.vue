@@ -1,12 +1,18 @@
 <script setup>
 import servicioAficiones from "../servicios/personal/servicioAficiones";
-import { ref, onMounted } from "vue";
+import { ref, onMounted ,reactive } from "vue";
 
 // #############################################################
 // ################ VARIABLES A UTILIZAR
 
 let aficiones = ref(null)
 let imagenUrl = ref("https://phantom-marca.unidadeditorial.es/3a77955e216ac29d0098cb1b5fc5e8fb/resize/828/f/jpg/assets/multimedia/imagenes/2024/01/27/17063840534486.jpg")
+
+let nuevaAficion=reactive({
+    nombre:"",
+    descripcion:"",
+    url:""
+})
 
 // #############################################################
 // ################ FUNCIONES DE GESTIÓN DE SERVIVIOS
@@ -33,6 +39,8 @@ function borrarAficion(aficion) {
 
   if (confirm("Desea Borrar la aficion")) {
 
+
+
     //PASO 2 : Enviar petición axios de borrado(DELETE)
     servicioAficiones
       .delete(aficion.id)
@@ -47,11 +55,34 @@ function borrarAficion(aficion) {
       .catch((error) => {
         alert("Problema de conexión");
       });
-
-
   }
 
 }
+function limpiar(){
+    nuevaAficion.nombre="";
+    nuevaAficion.descripcion="";
+    nuevaAficion.url="";
+}
+function crearElemento(){
+    if(nuevaAficion.nombre!==""&&nuevaAficion.descripcion!==""){
+        
+      servicioAficiones
+        .post(nuevaAficion)
+        .then(res=>{
+             //aficiones.value.push(JSON.parse(res));
+            alert(`Elemento ${nuevaAficion.nombre} añadido`);
+            obtenerAficiones()
+             limpiar();
+             console.log(nuevaAficion)
+        })
+        .catch(error=>{
+            alert(`Error añadiendo elemetno ${error}`);
+        }) 
+
+    }else alert("El nombre y la descripcion no puede estar vacío");
+}
+
+
 
 // #############################################################
 // ################ MONTADO DEL COMPONENTE
@@ -68,20 +99,16 @@ onMounted(() => {
 
       <button @click="borrarAficion(aficion)"> X </button>
 
+
     </li>
   </ul>
-  <form>
-    <label>Nombre
-      <input type="text">
-    </label><br>
-    <label>Descripcion
-      <input type="text">
-    </label><br>Imagen
-    <label>
-      <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg, image/jpg" />
-    </label><br>
-  </form>
   <img :src="imagenUrl" />
+  <form>
+    Nombre <input type="text" v-model="nuevaAficion.nombre"><br />
+    Descripción <input type="text" v-model="nuevaAficion.descripcion"><br />
+    Url (opcional)<input type="text" v-model="nuevaAficion.url"><br />
+    <button @click.prevent="crearElemento">Añadir</button> 
+  </form>
 </template>
 
 <style scoped>
