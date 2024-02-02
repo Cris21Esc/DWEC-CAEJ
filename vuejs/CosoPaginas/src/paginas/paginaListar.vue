@@ -7,7 +7,10 @@ import { ref, onMounted ,reactive } from "vue";
 
 let aficiones = ref(null)
 let imagenUrl = ref("https://phantom-marca.unidadeditorial.es/3a77955e216ac29d0098cb1b5fc5e8fb/resize/828/f/jpg/assets/multimedia/imagenes/2024/01/27/17063840534486.jpg")
+
+let id = ref("");
 let filtro = ref("");
+let descripcion = ref("");
 
 let nuevaAficion=reactive({
     nombre:"",
@@ -64,6 +67,7 @@ function limpiar(){
     nuevaAficion.descripcion="";
     nuevaAficion.url="";
 }
+
 function crearElemento(){
     if(nuevaAficion.nombre!==""&&nuevaAficion.descripcion!==""){ 
       servicioAficiones
@@ -100,6 +104,9 @@ function buscar(){
     });
 }
 
+function actualizar(){
+  
+}
 
 
 // #############################################################
@@ -114,6 +121,12 @@ onMounted(() => {
     <h1>Nombre</h1>
     <input type="text" v-model="filtro">
     <button @click.prevent="buscar">Buscar</button>
+  </form>
+  <form>
+    <h1>Actualizar</h1>
+    <input type="text" v-model="id">
+    <input type="text" v-model="descripcion">
+    <button @click.prevent="actualizar"></button>
   </form>
   <ul>
     <li v-for="(aficion, id) in aficiones" :key="id" @dblclick="mostrarInfo(aficion)">
