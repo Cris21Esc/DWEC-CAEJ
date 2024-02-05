@@ -18,6 +18,12 @@ class servicioAficiones {
   findByNombre(nombre) {
     return http.get(`/aficiones?nombre=${nombre}`);
   }
+  update(id,cambios){
+    return http.put(`/aficiones/${id}`,cambios)
+  }
+  findByGeneral(){
+    
+  }
 }
 
 export default new servicioAficiones();

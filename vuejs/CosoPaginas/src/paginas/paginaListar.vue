@@ -8,9 +8,15 @@ import { ref, onMounted ,reactive } from "vue";
 let aficiones = ref(null)
 let imagenUrl = ref("https://phantom-marca.unidadeditorial.es/3a77955e216ac29d0098cb1b5fc5e8fb/resize/828/f/jpg/assets/multimedia/imagenes/2024/01/27/17063840534486.jpg")
 
-let id = ref("");
 let filtro = ref("");
-let descripcion = ref("");
+let actualizarID = ref("");
+
+let cambios = reactive({
+      id:"",
+      nombre: "",
+      descripcion: "",
+      url: ""
+    });
 
 let nuevaAficion=reactive({
     nombre:"",
@@ -26,7 +32,6 @@ function obtenerAficiones() {
     .getAll()
     .then((response) => {
       aficiones.value = response.data;
-      console.log(aficiones.value)
     })
     .catch((error) => {
       console.log(error);
@@ -68,6 +73,13 @@ function limpiar(){
     nuevaAficion.url="";
 }
 
+function limpiarUpdate(){
+  cambios.id="";
+    cambios.nombre="";
+    cambios.descripcion="";
+    cambios.url="";
+}
+
 function crearElemento(){
     if(nuevaAficion.nombre!==""&&nuevaAficion.descripcion!==""){ 
       servicioAficiones
@@ -105,7 +117,22 @@ function buscar(){
 }
 
   function actualizar(){
-    alert("Pendiente de implementar");
+    if(actualizarID.value === ""){
+     return false;
+    }
+    cambios.id = actualizarID.value;
+    servicioAficiones
+    .update(actualizarID.value,cambios)
+    .then(response=>{
+      console.log("Cambios realizados");
+      obtenerAficiones();
+      limpiarUpdate();
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log("Error al hacer los cambios");
+      console.log(error);
+    });
   }
 
 
@@ -124,9 +151,11 @@ onMounted(() => {
   </form>
   <form>
     <h1>Actualizar</h1>
-    <input type="text" v-model="id">
-    <input type="text" v-model="descripcion">
-    <button @click.prevent="actualizar"></button>
+    ID<input type="text" v-model="actualizarID">
+    Nombre<input type="text" v-model="cambios.nombre">
+    Descripcion<input type="text" v-model="cambios.descripcion">
+    URL<input type="text" v-model="cambios.url">
+    <button @click.prevent="actualizar">Actualizar</button>
   </form>
   <ul>
     <li v-for="(aficion, id) in aficiones" :key="id" @dblclick="mostrarInfo(aficion)">
