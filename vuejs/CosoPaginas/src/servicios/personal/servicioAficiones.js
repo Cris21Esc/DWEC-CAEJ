@@ -21,7 +21,7 @@ class servicioAficiones {
   update(id,cambios){
     return http.put(`/aficiones/${id}`,cambios)
   }
-  findByGeneral(){
+  findByGeneral(busqueda){
     
   }
 }
