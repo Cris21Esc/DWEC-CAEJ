@@ -1,0 +1,28 @@
+{
+  "aficiones": [
+    {
+      "id": "8823",
+      "nombrec": "8823",
+      "descripcionc": "8823",
+      "Urlc": "8823"
+    },
+    {
+      "id": "34fd",
+      "nombre": "asdfa",
+      "descripcion": "asdfa",
+      "url": "asdfas"
+    },
+    {
+      "id": "37aa",
+      "nombre": "hola",
+      "descripcion": "hola",
+      "url": "kkk"
+    }
+  ],
+  "usuarios":[
+    {
+      "clave":"bGVv"
+    }
+
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "aficiones": [
+    {
+      "id": "2",
+      "nombre": "series2",
+      "descripcion": "Series",
+      "url": "src/assets/imagenes/peloa.jpg"
+    },
+    {
+      "id": "3",
+      "nombre": "series3",
+      "descripcion": "Series",
+      "url": "src/assets/imagenes/peloa.jpg"
+    },
+    {
+      "id": "4",
+      "nombre": "series4",
+      "descripcion": "Series",
+      "url": "src/assets/imagenes/peloa.jpg"
+    }
+  ]
+}

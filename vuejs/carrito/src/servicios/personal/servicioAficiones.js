@@ -4,6 +4,7 @@ class servicioAficiones {
   getAll() {
     return http.get("/aficiones");
   }
+
   get(id) {
     return http.get(`/aficiones/${id}`);
   }
@@ -18,12 +19,24 @@ class servicioAficiones {
   findByNombre(nombre) {
     return http.get(`/aficiones?nombre=${nombre}`);
   }
-  update(id,cambios){
-    return http.put(`/aficiones/${id}`,cambios)
+
+  update(id, data) {
+    return http.put(`/aficiones/${id}`, data);
   }
-  findByGeneral(busqueda){
-    console.log(http.get(`/aficiones/${busqueda}`));
+  postUsuario(clave){
+    return http.post("/Usuarios",clave);
   }
+
+  getUsuarios(){
+    return http.get(`/usuarios`);
+  }
+  
+  findByUsuario(clave){
+    return http.get(`/usuarios/?clave=${clave}`);
+  }
+
+  
+
 }
 
 export default new servicioAficiones();

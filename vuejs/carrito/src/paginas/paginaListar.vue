@@ -8,39 +8,70 @@ import { ref, onMounted ,reactive } from "vue";
 let aficiones = ref(null)
 let imagenUrl = ref("https://phantom-marca.unidadeditorial.es/3a77955e216ac29d0098cb1b5fc5e8fb/resize/828/f/jpg/assets/multimedia/imagenes/2024/01/27/17063840534486.jpg")
 
-let filtro = ref("");
-let actualizarID = ref("");
-
-let busquedaGeneral = ref("");
-
-let cambios = reactive({
-      id:"",
-      nombre: "",
-      descripcion: "",
-      url: ""
-    });
-
 let nuevaAficion=reactive({
     nombre:"",
     descripcion:"",
     url:""
 })
 
+let buscar=ref("");
+
+let cambiar=ref("");
+
+
+let cambioaficion=reactive({
+    id:"",
+    nombrec:"",
+    descripcionc:"",
+    Urlc:""
+
+})
+
+
+
 // #############################################################
-// ################ FUNCIONES DE GESTIÓN DE SERVIVIOS
+// ################ FUNCIONES DE GESTIÓN DE SERVICIOS
 
 function obtenerAficiones() {
   servicioAficiones
     .getAll()
     .then((response) => {
       aficiones.value = response.data;
+
     })
     .catch((error) => {
       console.log(error);
     });
+}
 
+function findBy(){
+  servicioAficiones
+  .findByNombre(buscar.value)
+    .then((response)=>{
+      aficiones.value=response.data;
+    }
+  )
+}
+
+function actualizar(){
+
+  servicioAficiones
+  .update(cambioaficion.id,cambioaficion)
+  .then((response)=>{
+  
+    console.log(response);
+
+    obtenerAficiones();
+    limpiar();
+    
+  })
+  .catch((error) => {
+        alert("Problema de conexión");
+      });
 
 }
+
+
 function mostrarInfo(aficion) {
   console.log(aficion.url)
   imagenUrl.value = aficion.url
@@ -74,24 +105,17 @@ function limpiar(){
     nuevaAficion.descripcion="";
     nuevaAficion.url="";
 }
-
-function limpiarUpdate(){
-  cambios.id="";
-    cambios.nombre="";
-    cambios.descripcion="";
-    cambios.url="";
-}
-
 function crearElemento(){
-    if(nuevaAficion.nombre!==""&&nuevaAficion.descripcion!==""){ 
+    if(nuevaAficion.nombre!==""&&nuevaAficion.descripcion!==""){
+        
       servicioAficiones
         .post(nuevaAficion)
         .then(res=>{
              //aficiones.value.push(JSON.parse(res));
             alert(`Elemento ${nuevaAficion.nombre} añadido`);
-            obtenerAficiones();
-            limpiar();
-            console.log(nuevaAficion)
+            obtenerAficiones()
+             limpiar();
+             console.log(nuevaAficion)
         })
         .catch(error=>{
             alert(`Error añadiendo elemetno ${error}`);
@@ -100,42 +124,6 @@ function crearElemento(){
     }else alert("El nombre y la descripcion no puede estar vacío");
 }
 
-function buscar(){
-  if(filtro.value == ""){
-    alert("valor en blanco");
-    return false;
-  }
-
-  console.log(filtro.value);
-  servicioAficiones
-    .findByNombre(filtro.value)
-    .then(response => {  
-      console.log(response.data);
-      aficiones.value = response.data;    
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-  function actualizar(){
-    if(actualizarID.value === ""){
-     return false;
-    }
-    cambios.id = actualizarID.value;
-    servicioAficiones
-    .update(actualizarID.value,cambios)
-    .then(response=>{
-      console.log("Cambios realizados");
-      obtenerAficiones();
-      limpiarUpdate();
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log("Error al hacer los cambios");
-      console.log(error);
-    });
-  }
 
 
 // #############################################################
@@ -147,23 +135,24 @@ onMounted(() => {
 <template>
   <h2>Lista de aficiones</h2>
   <form>
-    <h1>Nombre</h1>
-    <input type="text" v-model="filtro">
-    <button @click.prevent="buscar">Buscar</button>
+    Buscar <input type="text" v-model="buscar">
+    <button @click.prevent="findBy">Buscar</button> 
+    <br>
+    <br>
   </form>
+<br>
   <form>
-    <h1>Actualizar</h1>
-    ID<input type="text" v-model="actualizarID"><br>
-    Nombre<input type="text" v-model="cambios.nombre"><br>
-    Descripcion<input type="text" v-model="cambios.descripcion"><br>
-    URL<input type="text" v-model="cambios.url"><br>
-    <button @click.prevent="actualizar">Actualizar</button>
+    Id <input type="text" v-model="cambioaficion.id">
+    Nombre<input type="text" v-model="cambioaficion.nombrec">
+    Descripcion<input type="text" v-model="cambioaficion.descripcionc">
+    Url<input type="text" v-model="cambioaficion.Urlc">
+    <button @click.prevent="actualizar">Cambiar</button> 
+    <br>
+    <br>
   </form>
-  <form>
-    <h1>Buscar</h1>
-    <input type="text" v-model="busquedaGeneral">
-    <button @click.prevent="actualizar">Actualizar</button>
-  </form>
+
+
+
   <ul>
     <li v-for="(aficion, id) in aficiones" :key="id" @dblclick="mostrarInfo(aficion)">
       <span class="li-nombre"> {{ aficion.nombre }} </span>
