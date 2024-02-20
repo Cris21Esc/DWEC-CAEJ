@@ -28,14 +28,13 @@ class servicioAficiones {
   }
 
   getUsuarios(){
-    return http.get(`/usuarios`);
+    return http.get(`/Usuarios`);
   }
   
-  findByUsuario(clave){
-    return http.get(`/usuarios/?clave=${clave}`);
+  getUsuarios(clave){
+    return http.get(`Usuarios/${clave}`);
   }
 
-  
 
 }
 

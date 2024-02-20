@@ -3,75 +3,48 @@ import { ref, onMounted ,reactive } from "vue";
 import VueCryptojs from 'crypto-js';
 import servicioAficiones from "../servicios/personal/servicioAficiones";
 
-//Importar
-import { useRouter } from "vue-router";
+let nombre=ref("");
 
-// Utilizamos enrutamiento
-const rutas = useRouter()
+let pass=ref("");
 
-let usuario = ref("");
-let contrasenia = ref("");
+function guardar(){
 
-//Funcion de Iniciar
+  localStorage.setItem('nombre',nombre.value);
 
-function iniciar() {
+  if (pass.value) {
+    let hash = VueCryptojs.SHA256(pass.value).toString();
+    console.log(hash);
+  } else {
+    console.error("La contraseña no puede ser nula o indefinida");
+  }
+  let userhash= VueCryptojs.SHA256(nombre.value).toString();
+  console.log(userhash);
 
-    if (usuario !== "" && contrasenia !== "") {
-
-
-        servicioAficiones.findByUsuario(window.btoa(usuario.value))
-            .then((response) => {
-
-                if (response.data.length === 0) {
-                    alert("el usuario no existe")
-                    localStorage.setItem("usuario", null)
-                }
-                else {
-                    localStorage.setItem("usuario", usuario.value)
-
-                    //Recargar Página
-                    //Opción 1:  
-                    //location.reload();
-
-                    //Opción 2: 
-                    rutas.go();
-
-
-                }
-                // console.log(response.data.length)
-                //     alert("usuario correcto")
-
-            })
-            .catch((error) => {
-                alert("usuario incorrecto")
-                //console.log(error);
-            })
-
-    }
 }
+
+function acceder(){
+  usuario.value
+  pass.value
+  let token=""; //ENCRIPTA USUARIO Y PASSWORD es un token unico de usuario y contraseña
+
+  servicioAficiones.getUsuarios(token).then
+  //Si existe en personal, localstorage
+}
+
+
 </script>
 
 <template>
- <form action="">
-        <!-- Nombre -->
-        <label for=""> Usuario:
-            <br>
-            <input type="text" v-model="usuario" placeholder="MarIa_97">
-        </label>
+  <h2>Inicio de sesion</h2>
+  <form>
+   
+    <input type="text" name="nombre" v-model="nombre">
+    <input type="password" name="pass" v-model="pass">
 
-        <br>
-        <br>
-        <!-- Contraseña de 6 o más caracteres-->
-        <label> Contraseña
-            <br>
-            <input type="password" v-model="contrasenia" pattern=".{6,}" placeholder="jl_78Y2_JG">
-        </label>
-        <br><br>
-        <button @click.prevent="iniciar()">Iniciar</button>
+    <button @click.prevent="guardar()">log in</button> 
+  </form>
 
-    </form>
 </template>
-
 
 <style>
   h2 {

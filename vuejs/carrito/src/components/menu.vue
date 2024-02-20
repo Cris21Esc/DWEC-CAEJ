@@ -6,7 +6,7 @@ const props = defineProps({
     "titulo":String,
     "links":Array,
 })
-const user = localStorage.getItem('usuario');
+const user = localStorage.getItem('nombre');
 
 const nombre=ref("");
 
