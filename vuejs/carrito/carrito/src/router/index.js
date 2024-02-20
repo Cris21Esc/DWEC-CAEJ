@@ -9,11 +9,31 @@ const router = createRouter({
     routes: [
         {   path: '/', 
             name:'inicio',
-            component: paginaInicio
+            component: paginaInicio,
+            beforeEnter:(to, from,next)=>{
+                let usuario=localStorage.getItem('usuario');
+                if(usuario!==null){
+                    next();
+
+                }else{
+                    next('/session')
+                }
+            }
+       
+       
         },  
         {   path: '/listado', 
             name:'listar',
-            component: paginaListar
+            component: paginaListar,
+            beforeEnter:(to, from,next)=>{
+                let usuario=localStorage.getItem('usuario');
+                if(usuario!==null){
+                    next();
+
+                }else{
+                    next('/session')
+                }
+            }
         },
         {   path: '/session', 
         name:'session',

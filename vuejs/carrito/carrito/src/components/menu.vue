@@ -6,7 +6,7 @@ const props = defineProps({
     "titulo":String,
     "links":Array,
 })
-const user = localStorage.getItem('nombre');
+const user = localStorage.getItem('usuario');
 
 const nombre=ref("");
 
@@ -14,12 +14,20 @@ onMounted(()=>{
     nombre.value=`${user}`;
 })
 
+function logout(){
+
+    localStorage.removeItem('usuario');
+    location.reload();
+
+
+}
 
 </script>
 
 <template>
     <!-- <h1> {{ titulo }}</h1> -->
-    <p id="user" name="user">{{ nombre }}</p>
+    <p id="user" name="user" v-if="user!=null">bienvenido {{ nombre }}</p>
+    <button @click.prevent="logout()" v-if="user!=null">Cerrar session</button> 
     <nav>
         <RouterLink
          v-for="enlace in props.links"

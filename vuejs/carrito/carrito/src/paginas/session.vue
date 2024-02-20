@@ -3,6 +3,9 @@ import { ref, onMounted ,reactive } from "vue";
 import VueCryptojs from 'crypto-js';
 import servicioAficiones from "../servicios/personal/servicioAficiones";
 
+
+// Utilizamos enrutamiento
+
 let nombre=ref("");
 
 let pass=ref("");
@@ -19,19 +22,50 @@ function guardar(){
   }
   let userhash= VueCryptojs.SHA256(nombre.value).toString();
   console.log(userhash);
-
 }
 
-function acceder(){
-  usuario.value
-  pass.value
-  let token=""; //ENCRIPTA USUARIO Y PASSWORD es un token unico de usuario y contraseña
+function acceder() {
+  if (nombre.value && pass.value) {
 
-  servicioAficiones.getUsuarios(token).then
-  //Si existe en personal, localstorage
+servicioAficiones.findByUsuario(window.btoa(nombre.value))
+            .then((response) => {
+
+                if (response.data.length === 0) {
+                    alert("el usuario no existe")
+                    localStorage.setItem("usuario", null)
+                }
+                else {
+                    localStorage.setItem("usuario", nombre.value)
+
+                    //Recargar Página
+                    //Opción 1:  
+                    location.reload();
+
+                    //Opción 2: 
+                   //  rutas.go();
+                }
+                // console.log(response.data.length)
+                //    alert("usuario correcto")
+
+            })
+            .catch((error) => {
+                alert("usuario incorrecto")
+                console.log(error);
+            });
+          }else {
+    console.error("El nombre de usuario y la contraseña son obligatorios");
+  }
 }
 
 
+// function acceder(){
+//   usuario.value
+//   pass.value
+//   let token=""; //ENCRIPTA USUARIO Y PASSWORD es un token unico de usuario y contraseña
+
+//   servicioAficiones.getUsuarios(token).then
+//   //Si existe en personal, localstorage
+// }
 </script>
 
 <template>
@@ -41,7 +75,7 @@ function acceder(){
     <input type="text" name="nombre" v-model="nombre">
     <input type="password" name="pass" v-model="pass">
 
-    <button @click.prevent="guardar()">log in</button> 
+    <button @click.prevent="acceder()">log in</button> 
   </form>
 
 </template>
