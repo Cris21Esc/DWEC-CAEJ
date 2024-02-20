@@ -11,7 +11,8 @@
     "axios": "^1.6.7",
     "vue": "^3.2.45",
     "vue-cryptojs": "^2.4.5",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
